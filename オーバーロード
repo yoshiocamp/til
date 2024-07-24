@@ -1,0 +1,24 @@
+・クラス内に同じ名前で引数の型や数が違うメソッドを複数定義することをオーバーロード
+
+・呼び出すメソッドは名前と引数の組み合わせで決めている
+
+class Student{
+    void setData(String n){
+...
+    }
+     void setData(String n,int e,int m){
+...
+     }
+ }
+
+main(~){
+  Student stu = new Student();
+  stu.setData("菅原");
+  stu.setData("菅原",80,90);
+...
+設計図側
+プログラムがわかりやすくなる
+名前をたくさん付ける必要がなくなる。
+
+呼び出し側
+メソッド名が変わらないため使いやすい。
