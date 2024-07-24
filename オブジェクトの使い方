@@ -1,0 +1,31 @@
+# １.生成
+クラス名　オブジェクト名　＝　new クラス名（）;
+Student stu1 ＝　new Student();
+# 2.変数・メソッドを利用
+　オブジェクト名.変数名
+　オブジェクト名.メソッド名(引数)
+　stu1.name = "菅原";
+  stu1のnameの中に"菅原"を入れる
+  stu1.setScore(80,90);
+
+|------------------------|
+|        student         |
+|------------------------|
+|name     :String        |
+|engScore :int           | 
+|mathScore:int           |
+|------------------------|
+|display()        :void  |
+|setScore(int,int):void  |
+|setAvg()         :double|
+|----------↓-------------|プログラムにおいてクラスをもとにオブジェクトを作ることをインスタンス化という。
+|name □   →"菅原"        |
+|engScore mathScore      |
+|   0→80　　　0→90       |
+|display() setScore(...) |
+|getAve()                |
+|------------------------|
+
+
+
+
