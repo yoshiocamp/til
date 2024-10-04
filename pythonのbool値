@@ -1,0 +1,38 @@
+比較演算子
+a = 3
+a == 3
+true
+a == 2
+false
+
+==は等しいかどうか比べるときに付き合う比較演算子
+bool値はtrueかfalseか
+
+x == y  # xとyは等しい
+x != y　# xとyは等しくない
+x < y  # xはyより小さい
+x <= y # xはy以下
+x > y  # xはyより大きい
+x >= y  # xはy以上
+
+文字列に指定した文字が入っているか
+inを使う
+"P" in "Python"
+True
+"p" in "Python"
+False
+
+文字列に指定した文字が入っていないか
+not inを使う
+"p" not in "Python"
+True
+
+応用
+aが2よりも大きく10以下であるか
+a > 2 and a <= 10
+だが
+2 < a <= 10
+と書くことがベスト
+
+
+
