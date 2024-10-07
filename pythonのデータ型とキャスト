@@ -1,0 +1,68 @@
+データ型を調べる
+a = 2
+type(a)
+int
+
+int 数値
+str 文字列
+float 小数　実数
+
+キャスト
+three = 3
+print(three, type(three))
+3<class "int">
+変数を変換
+three_str = str(three)
+print(three_str, type(three_str))
+3<class "str">  #見た目は3で変わらないがデータ型が変わっている
+int型に戻す（変更）
+three_int = int(three_str)
+print(three_int,type(three_int))
+3<class "int">  #見た目は変わらないがデータ型が変わっている
+
+print(three == three_str)
+print(three == three_int)
+
+False #データ型が異なるため
+True  #データ型も一致するため
+
+ただし
+floart型からint型には正しく変更できない
+two_point_nine = 2.9
+two = int(two_point_nine)
+print(two, type(two))
+2<class "int"> #int型なので整数に変換
+two_float = float(two)
+print(two_float,type(two_float))
+2.0<class "float"> #元の数値が書き換えられている
+print(two_point_nine == two_float)
+False  #当然元の数字とは異なるのでFolseになる
+
+＜演習問題＞
+文字列1,980円を数値型1980に直しましょう
+＜解答＞
+price = "1,980円"
+price = int(price.replace(",",""))..replace("円",""))  #replaceを使ってint型に変更できない文字列を削除
+print(price,type(price))
+
+1980<class"int">
+変数NONEについて
+特に何もないことを表したいときに使う。
+x = None
+print(x)
+
+None
+
+print(type(x))
+
+  <class'NoneType'>
+変数がNoneかどうか判別するときは
+is Noneを使う
+print(x is None)
+
+True
+
+
+
+
+
