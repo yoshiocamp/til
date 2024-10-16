@@ -1,0 +1,98 @@
+list
+複数の変数を扱うときによく使われる
+numbers = [1,2,3,4,5]   #変数numbersに５つの要素を格納
+print(numbers)
+print(tyep(numbers))
+
+[1,2,3,4,5]
+<class"list">   #データ型がlistになっている
+
+文字列を格納するときも
+languages = ["Python","Java","Golang"]
+と書いて格納する
+
+文字列や数値、bbol値も混ぜて格納できる
+mixture = [1,"Python",True,33]
+
+print(mixture[0])
+print(mixture[2])    #中身を取り出したいときはインデックスを指定
+
+１
+True
+
+複数の要素を同時に取り出す
+mixture = [1,"Python",True,33]
+
+print(mixture[0:3])   #スライスを使う
+
+[1,"Python",True]
+
+ひとつずつ取り出す
+
+mixture = [1,"Python",True,33]
+　　print(mixture)
+
+        for i in range(len(mixture)):  # mixtureの長さだけループ
+          print(mixture[i])   #iの中身を取り出す
+
+1
+Python
+True
+33
+
+ for v in mixture  #変数自体をループの対象に指定すればもっとすっきりしたコードになる
+　　　print(v)
+
+1
+Python
+True
+33
+
+enumerateについて
+ for i, v in enumerate(mixture):  #インデックスのナンバーも取得できる
+　　　　 print(i,v)
+
+0 1
+1 Python
+2 True
+3 33
+
+指定した要素が含まれるか判定したいときも文字列と同様に　in　が使える
+
+print(1 in mixture)
+print(22 in mixture)
+print("Python" in mixture)
+print("Java" in mixture)
+
+True
+False
+True
+False
+
+リストは書き換え可能
+mixture[1] = "Java"   #インデックスを指定して = で代入
+print(mixture)
+
+ [1,"Java",True,33]
+
+
+listの演算
+numbers1 = [1,2,3,4,5]
+numbers2 = [6,7,8,9,10]
+print(number1 + number2) #listの足し算
+
+ [1,2,3,4,5,6,7,8,9,10]
+
+print(number1 * 2)  #listの掛け算
+[1,2,3,4,5,1,2,3,4,5]
+
+演習
+数字の0が10個入ったリストを作成してください
+
+zeros = [0] * 10
+print(zeros)
+
+[0,0,0,0,0,0,0,0,0,0]
+
+
+
