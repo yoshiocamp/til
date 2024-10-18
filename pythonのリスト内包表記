@@ -1,0 +1,10 @@
+forループを用いて0~4のリストを作る
+numbers = []
+
+for i in range(5):
+     numbers.append(i)
+print(numbers)
+
+[0, 1, 2, 3, 4]
+
+これをリスト内包表記で表す
