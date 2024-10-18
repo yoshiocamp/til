@@ -8,3 +8,23 @@ print(numbers)
 [0, 1, 2, 3, 4]
 
 これをリスト内包表記で表す
+numbers = [i for i in range(5)]
+print(numbers)
+
+[0, 1, 2, 3, 4]
+
+処理速度の判定
+%%timeit
+の下に判定したい処理を書く
+
+演習
+変数numbersから10以上30未満の値だけ抽出したリストを作ってください。
+numbers = [20,58,19,4,29,31,5,1,39,13,30]
+
+解答
+numbers = [20,58,19,4,29,31,5,1,39,13,30]
+new_numbers = [n for n in numbers if 10 <= n < 30]
+print(new_numbers)
+
+[20, 19, 29, 13]
+
