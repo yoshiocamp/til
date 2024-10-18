@@ -1,0 +1,71 @@
+append(要素の追加)
+
+numbers = [1,2,3,4,5]
+
+numbers.append(6)
+print(numbers)
+
+[1,2,3,4,5,6]
+
+例
+0~4をforループで回して各要素を2倍した値をリストに格納したい。
+numbers = []　　　#空のリストを作成
+for i in range(5):  #0~4をからのリストに格納
+     numbers.append(i*2)　　#リストの中身を2倍
+print(numbers)
+
+[0, 2, 4, 6, 8]
+
+extend(リストの拡張)
+例
+numbers1 = [1,2,3,4,5]
+numbers2 = [6,7,8,9,10]
+
+numbers1.extend(numbers2)
+
+print(numbers1)
+print(numbers2)
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[6, 7, 8, 9, 10]
+
+
+appendやextendを使うと元の数値は上書きされてしまう
+元のリストを残しておきたいときは演算を使う
+
+numbers1 = [1,2,3,4,5]
+numbers2 = [6,7,8,9,10]
+
+numbers3 = numbers1 + numbers2
+print(numbers1)
+print(numbers2)
+print(numbers3)
+
+[1, 2, 3, 4, 5]
+[6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+remove(リストから削除)
+例
+numbers = [1,2,3,4,5]
+
+print(numbers)
+numbers.remove(3)
+print(numbers)
+
+[1, 2, 3, 4, 5]
+[1, 2, 4, 5]
+
+ただし削除対象は最初にヒットしたモノだけ
+
+numbers = [1,2,3,4,5,3]  #3を後ろにもう一つ追加
+
+print(numbers)
+numbers.remove(3)
+print(numbers)
+
+[1, 2, 3, 4, 5, 3]
+[1, 2, 4, 5, 3]　　　#後ろの3は残っている
+
+ピンポイントで削除したいときにremoveを使う
+
