@@ -1,0 +1,38 @@
+辞書も複数の要素を入れておけるがリストやタプルと違う所は
+要素をインデックスではなく
+key(キー)で管理していること
+
+fruits = {"apple":100,"banana":200}
+
+print(fruits)
+print(type(fruits))
+
+{'apple': 100, 'banana': 200}
+<class 'dict'>
+
+この場合のappleやbananaをkey
+100や200をvalueと呼び
+valueを取り出したいときはキーを下記のように指定すると取り出せる
+
+print(fruits["apple"])
+print(fruits["banana"])
+
+100
+200
+
+valueの中身を変更したいときは
+fruits["banana"] = 150　　#キーを指定して代入してやればよい
+print(fruits["apple"])
+print(fruits["banana"])
+
+100
+150
+
+辞書に存在しないキーをしていしてvalueを代入すると
+エラーではなく追加される
+
+fruits["peach"] = 180
+print(fruits)
+
+{'apple': 100, 'banana': 150, 'peach': 180}
+
