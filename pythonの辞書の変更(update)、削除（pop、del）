@@ -39,4 +39,13 @@ print(fruits)
 100　　　　#ｖに格納されたvalueが表示されている
 {'banana': 120, 'peach': 150}
 
+del fruits.pop["apple"]
+でも削除出来て
+print(fruits)
+
+{'banana': 180, 'peach': 150}
+と表示される。
+
+削除にはpopまたはdelを使う
+
 
