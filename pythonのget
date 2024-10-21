@@ -1,0 +1,53 @@
+get（）メソッド
+keyからvalueを取り出す。
+fruits  = {"apple" : 100, "banana" : 120, "peach": 150}
+fruits.get("apple")
+
+100
+
+
+存在しないvalueを取り出そうとしたときの違い
+keyを直接指定した場合は
+fruits["grape"]
+
+--------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+<ipython-input-2-676f045d6045> in <cell line: 1>()
+----> 1 fruits["grape"]
+
+KeyError: 'grape'
+# エラーが発生するのに対し
+
+print(fruits.get("grape"))
+
+None
+
+#　Noneが返ってくる
+
+get()メソッドを使用した場合
+指定したkeyが存在する
+　→該当するvalueを取得する
+指定したkeyが存在しない場合
+  →「何も値が存在しない」意味のNoneを返す
+
+get()メソッドを使うメリット
+1⃣　辞書から要素を取得した後何らかの処理を継続したいとき
+　　辞書から要素を取得できなくてもほかの処理を実行したいときに
+　　エラーを発生させないためにもkeyを直接指定するよりget()を使った方がよい
+
+2⃣　あえて条件分岐する必要がなくなる
+    もしapple存在したらそのvalueを表示する
+　　get()メソッドを使わない場合
+　　if "apple" in fruits:
+    print(fruits["apple"])
+
+　　100
+
+    get()メソッドを使うと
+　　fruits,get("apple")
+
+    100
+となり1行で済む
+
+
+
