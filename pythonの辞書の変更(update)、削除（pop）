@@ -1,0 +1,42 @@
+fruits  = {"apple" : 100, "banana" : 120, "peach": 150}
+
+先ほど使ていた辞書fruitsに対して{"banana":180,"grape":250}を格納した新しい辞書fruits2の内容を反映したい
+fruits2 = {"banana":180,"grape":250}　#変更内容の記載
+fruits.update(fruits2)　# 変更
+print(fruits)  #表示
+
+{'apple': 100, 'banana': 180, 'peach': 150, 'grape': 250}　#問題なく変更されている
+
+元々あったbananaに対してはvalueの変更が行われて、存在していなかったgrapeは単純に追加されている
+つまり
+keyが存在する→更新
+keyが存在しない→追加
+
+追加だけがしたいなら
+fruits["grape"] = 250
+でよい
+
+辞書に対してpopメソッドを使用することで指定した要素を削除することができる
+appleと100のセットを消したいとき
+fruits.pop("apple")  #popメソッドでkeyを指定
+print(fruits)
+
+{'banana': 180, 'peach': 150, 'grape': 250}　#削除されている
+しかし本来popメソッドは削除ではなく
+指定したkeyのValueを取り出すためのメソッド
+実際
+fruits.pop("apple")
+のみだと
+100が表示される
+
+valueを取得しながら変数fruitsから指定したKeyを取り出すためのメソッドがpop
+
+fruits  = {"apple" : 100, "banana" : 120, "peach": 150}
+v = fruits.pop("apple") #取り出したvalueを変数vに入れる
+print(v)
+print(fruits)
+
+100　　　　#ｖに格納されたvalueが表示されている
+{'banana': 120, 'peach': 150}
+
+
