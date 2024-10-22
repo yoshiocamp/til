@@ -1,0 +1,142 @@
+オリジナルの関数を作る
+def  #関数を定義するときに使う
+
+例
+呼び出すとHelloと出力する関数を定義する
+defの後に関数名()：　#かっこ　コロン
+    関数の内容
+
+def say_hello():
+    print("Hello")
+
+呼び出すときは
+関数名()
+
+say_hello()
+
+Hello
+
+数値の平均を出す関数を作る
+def calc_average():
+  numbers = [2,5,7,3,1]
+
+  avg = sum(numbers) / len(numbers)
+  
+  print(avg)
+
+実行
+calc_average()
+
+3.6
+
+
+関数は呼び出した回数分実行するので
+calc_average()
+calc_average()
+calc_average()
+
+3.6
+3.6
+3.6
+
+となる。何度もコードを書かなくても実行できることが関数のメリットである
+
+今はリストの内容を変更できないが次のような書き方で好きなリストで計算できるようにする
+
+関数の中にnumbersを入れず（）の中に入れて関数外で定義する
+（）の中に書いた変数のことを関数の引数という
+
+def calc_average(numbers):
+
+  avg = sum(numbers) / len(numbers)
+  
+  print(avg)
+
+引数を入れて実行
+numbers = [2,5,7,3,1]
+numbers1 = [2,4,6]
+numbers2 = [6,8,15,1]
+
+calc_average(numbers)
+calc_average(numbers1)
+calc_average(numbers2)
+
+3.6
+4.0
+7.5
+
+関数を使うことで同じコードを何度も書かずに計算することができている
+このように何祖も使いたい処理は関数にまとめていつでも使えるテンプレートの形にしておく
+
+注意したいのは関数の中で定義した変数は関数の外では使えない
+つまり
+del avg　　　#前回のavgの情報を削除
+
+def calc_average(numbers):
+
+
+    avg = sum(numbers) / len(numbers)
+  
+    print(avg)
+
+numbers = [2,5,7,3,1]　#インデントの関係で関数の外になる
+print(avg)　　　　　#関数の外でavgの変数を使う
+
+NameError                                 Traceback (most recent call last)
+<ipython-input-19-f7224c18ee67> in <cell line: 11>()
+      9 
+     10 numbers = [2,5,7,3,1]
+---> 11 print(avg)
+
+NameError: name 'avg' is not defined
+
+このようにavgが見つからないというエラーになる
+
+関数の中で使っていた変数の中身を関数の外で表示したいとき
+print(avg)にしていたところを
+return avgに変える
+
+def calc_average(numbers):
+
+
+    avg = sum(numbers) / len(numbers)
+  
+    return avg
+  関数の外で
+
+numbers = [2,5,7,3,1]
+
+avg = calc_average(numbers)
+
+print(avg)
+
+3.6
+
+returnを使うと関数の呼び出しもとに戻される
+戻り値という
+
+戻り値を設定していないと
+
+def calc_average(numbers):
+
+
+    avg = sum(numbers) / len(numbers)
+
+    print(avg)
+
+
+numbers = [2,5,7,3,1]
+
+avg = calc_average(numbers)
+
+print(avg)
+
+3.6　　　#関数のprint結果
+None　　#関数外のavgの結果
+
+演習
+
+
+
+
+
