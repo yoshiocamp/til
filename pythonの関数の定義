@@ -135,8 +135,88 @@ print(avg)
 None　　#関数外のavgの結果
 
 演習
+3で割り切れるときはFizz
+5で割り切れるときはBuzz
+3と5の両方で割り切れるときはFizzBuzz
+いずれにも該当しないときは、その数字が表示されるプログラム
+
+3,5,30,49の時の判定結果を確認してください
+ただし戻り値を利用して関数外で判定結果を表示できるようにしてください。
+
+def fizz_buzz(x):
+
+    if x % 15 == 0:
+      result = "FizzBuzz"
+
+    elif  x % 3 == 0:
+      result = "Fizz"
+
+    elif  x % 5 == 0:
+      result = "Buzz"
+
+    else:
+      result = x
+
+    return result
+
+r1 = fizz_buzz(3)
+r2 = fizz_buzz(5)
+r3 = fizz_buzz(30)
+r4 = fizz_buzz(49)
+
+print(r1,r2,r3,r4)
 
 
+Fizz Buzz FizzBuzz 49
+
+仮にretturnを使用しないと
+def fizz_buzz(x):
+
+    if x % 15 == 0:
+      result = "FizzBuzz"
+
+    elif  x % 3 == 0:
+      result = "Fizz"
+
+    elif  x % 5 == 0:
+      result = "Buzz"
+
+    else:
+      result = x
+
+  print(result)
+
+fizz_buzz(3)
+fizz_buzz(5)
+fizz_buzz(30)
+fizz_buzz(49)
+
+49
+
+最後しか結果が出ない　　#ｘがその都度書き換えられているため
+
+例
+足し算の関数を作る
+def add(a,b):
+    return a + b
+
+result = add(3,5)
+print(result)
+
+8
+
+例　苗字と名前でフルネームを作る関数を作る
+def create_fullname(last_name,first_name):
+  return last_name + " " + first_name
+
+fullname = create_fullname("佐藤","太郎")
+print(fullname)
+
+
+佐藤 太郎
+
+
+    
 
 
 
