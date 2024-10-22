@@ -1,0 +1,16 @@
+
+
+def create_fullname(last_name,first_name):
+  return last_name + " " + first_name
+
+fullname = create_fullname("太郎", "佐藤")
+print(fullname)
+太郎 佐藤   #キーワードを指定していないため引数の順番通りに表示
+
+fullname = create_fullname(first_name = "太郎",last_name ="佐藤")
+print(fullname)
+
+佐藤 太郎    #キーワードに設定した引数にそれぞれ渡されているため正しく表示
+
+
+
