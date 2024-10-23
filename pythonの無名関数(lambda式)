@@ -1,0 +1,56 @@
+無名関数
+関数名をつけずに関数を定義する
+
+calc_average_lambda = lambda numbers: sum(numbers) / len(numbers)
+numbers = [2,5,7,3,1]
+
+calc_average_lambda(numbers)
+
+
+3.6
+
+かっこで囲って引数を渡すだけでもできる
+(lambda numbers: sum(numbers) / len(numbers))(numbers)
+
+3.6
+
+実は
+def 関数名（引数）
+    return 戻り値
+
+lambda 引数：戻り値
+を置き換えただけ
+
+無名関数は関数名をつけるまでもないけど平均の計算など簡単な処理をまとめておきたいときなどに使う
+
+例
+2で割り切れる場合はその数字
+2で割り切れないときは”2で割り切れません”と返す処理を作る
+
+普通の関数定義を使った場合
+def myfunc(x):
+    if x % 2 == 0:
+        return x
+    else:
+        return"2で割り切れません"
+
+result1 = myfunc(2)
+print(result1)
+result2 = myfunc(5)
+print(result2)
+
+2
+2で割り切れません
+
+無名関数を使うと
+mylambda = lambda x: x if x % 2 == 0 else "2で割り切れません"
+
+result1 = mylambda(2)
+print(result1)
+result2 = mylambda(5)
+print(result2)
+
+
+2
+2で割り切れません
+となる
