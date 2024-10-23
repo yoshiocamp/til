@@ -13,4 +13,23 @@ print(fullname)
 佐藤 太郎    #キーワードに設定した引数にそれぞれ渡されているため正しく表示
 
 
+デフォルト引数
+関数の引数であらかじめ初期値を競っておできる機能
+
+例
+def greet(name,message = "Hello"):
+    print(message,name,"!")
+
+greet("Alice")
+
+
+Hello Alice !   #nameしか入れていないのにmessageが出力されている
+
+
+例
+greet("Bob","Goodbye")
+
+
+Goodbye Bob !   #messageを入れると入れた方の引数が表示されている
+
 
