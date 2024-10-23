@@ -1,0 +1,109 @@
+例外処理とは想定しない処理が行われたときどう対処するかあらかじめ決めておける機能
+何もしなければ
+
+add_num = lambda a,b: a + b
+
+add_num(1,"2")
+
+TypeError                                 Traceback (most recent call last)
+<ipython-input-16-446cd6f83118> in <cell line: 1>()
+----> 1 add_num(1,"2")
+
+<ipython-input-15-95003ca76f5a> in <lambda>(a, b)
+----> 1 add_num = lambda a,b: a + b
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+
+と上のように肩が違う同士の足し算はできないためTypeErrorが表示される
+
+このような想定外のアクシデントに対応できるようにするのが例外処理
+
+トラブルが起きそうなところにtry：を入れる
+except TypeError:に対処した処理を入れる
+
+
+try:
+    r = add_num(1,"2")
+    print(r)
+except TypeError:
+    print("例外処理が発生しました")
+
+print("例外処理が終わりました")
+
+
+例外処理が発生しました
+例外処理が終わりました    #しっかりエラーをキャッチして処理が行われている
+
+もし正しくできている場合はexcept以下は処理されない
+
+try:
+    r = add_num(1,2)
+    print(r)
+except TypeError:
+    print("例外処理が発生しました")
+
+print("例外処理が終わりました")
+
+
+3
+例外処理が終わりました　　#exceptに該当する print("例外処理が発生しました")は処理されていない
+
+
+TypeErrorの後にas eをつけて出力するとなんのエラーなのかも確認できる
+
+try:
+    r = add_num(1,"2")
+    print(r)
+except TypeError as e:
+    print(e)
+    print("例外処理が発生しました")
+
+print("例外処理が終わりました")
+
+
+
+unsupported operand type(s) for +: 'int' and 'str'　　 #エラー内容が記載されている
+例外処理が発生しました
+例外処理が終わりました
+
+エラーが発生しない正しい処理の時をelseに入れておくのがベター
+
+
+try:
+    r = add_num(1,2)
+   
+except TypeError as e:
+    print(e)
+    print("例外処理が発生しました")
+else
+    print(r)
+
+print("例外処理が終わりました")
+
+
+3
+例外処理が終わりました
+
+tryの対象をできるだけ絞ってあげる方が良いコードとなる
+
+
+エラーの有無にかかわらず実行したい処理があるときはfinally:を入れる
+
+try:
+    r = add_num(1,2)
+   
+except TypeError as e:
+    print(e)
+    print("例外処理が発生しました")
+else:
+    print(r)
+finally:
+    print("例外処理が完了しました")
+
+print("例外処理が終わりました")
+
+
+3
+例外処理が完了しました　　　　#finally以下の処理も実行されている
+例外処理が終わりました
