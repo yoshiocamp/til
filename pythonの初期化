@@ -1,0 +1,77 @@
+クラスの中でインスタンスを生成したときに自動で実行される処理を定義できる。
+__init__メソッド    #アンダースコア＿は2個続き
+
+class Student(object):
+    def __init__(self):
+        print("パワー")
+
+    def say_hello(self,times):
+        print("Hello!" * times)
+
+これでインスタンスを生成したときにパワーと表示されるように変更できた
+
+Studennt = Student()
+
+
+パワー
+
+これだけでパワーが表示されている。これがインスタンスの初期化
+
+__init__はメソッド内で定義した変数をクラス内で活用できる
+
+例
+Studentクラスの__init__で引数nameを受け取れるようにする
+
+class Student(object):
+    def __init__(self,name):
+        self.name = name
+
+    def say_hello(self,times):
+        print(self.name + "say"+"Hello!" * times)
+      
+# 変数　=  クラス名（）
+Student = Student("Taro")
+# 変数.メソッド名（）
+Student.say_hello(3)
+
+
+TarosayHello!Hello!Hello!
+
+インスタンス生成時に渡したTaroが表示されている
+
+__init__を使うときは
+メソッド内で変数にselfをつけること
+インスタンス生成時に値を渡すこと
+
+
+selfとは
+
+class Student(object):
+    def __init__(self):
+        print(self)
+
+Student = Student()
+
+
+<__main__.Student object at 0x7cde66bb9960>  #1
+
+print(Student)
+
+
+<__main__.Student object at 0x7cde66bb9960>  #1と全く同じになっている
+
+つまりselfの中に入っているのは生成したオブジェクト自身であることがわかる
+
+
+
+まとめ
+__init__で受け取った値は
+self.name = name
+のように記述することで
+クラス内で活用できる
+
+
+クラス内のメソッドで
+変数を利用するには
+selfを必ずつける
+
