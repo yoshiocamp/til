@@ -1,0 +1,48 @@
+クラスの継承
+↓
+親のクラスから変数やメソッドを受け継ぐことができる
+
+クラスの継承では今までobjectを入れていたところに親のクラスの名前を入れる
+
+class Student(object):
+    def __init__(self,name):
+        self.name = name
+
+    def say_hello(self,times):
+        print(self.name + "Say" + "Hello"*times)
+
+class GraduateStudent(Student):
+    def __init__(self,research_topic):
+        self.research_topic = research_topic
+    def research(self):
+        print(self.research_topic)
+
+graduate_student = GraduateStudent("Math")
+
+graduate_student.research()
+
+
+Math
+
+say_helloメソッドも使えるようにするには
+class Student(object):
+    def __init__(self,name):
+        self.name = name
+
+    def say_hello(self,times):
+        print(self.name + "Say" + "Hello"*times)
+
+class GraduateStudent(Student):
+    def __init__(self,name,research_topic):  #nameも受け取れるようにする
+        super().__init__(name)　　　　　#super().__init__を使うことで親のinitを呼び出せるようにしている
+        self.research_topic = research_topic
+    def research(self):
+        print(self.research_topic)
+
+graduate_student = GraduateStudent("Taro","Math")　#say_helloメソッドの引数も入れる
+
+graduate_student.say_hello(3)
+graduate_student.research()
+
+TaroSayHelloHelloHello
+Math
