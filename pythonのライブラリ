@@ -1,0 +1,89 @@
+まず使いたいライブラリをインポートする必要がある
+例えばグラフを作るseabornを使いたいなら
+import seabornを書いてコードを実行する
+
+import seaborn
+
+iris = seaborn.load_dataset("iris")
+
+seaborn.pairplot(iris)
+
+
+<seaborn.axisgrid.PairGrid at 0x7c1477904bb0>#グラフが表示される
+
+
+
+インポートの省略(as)
+
+import seaborn as sns  #seabornの名前をsnsに変更している
+
+iris = sns.load_dataset("iris")  
+
+sns.pairplot(iris)
+
+コード尾を実行すると問題なくグラフができる
+
+慣習として省略する名前は決まっている
+seaborn　→　sns
+tensorflow　→　tf
+matplotlib　→　plt
+pandas　→　pd
+numpy　→　np
+
+ライブラリには2種類ある
+標準ライブラリ
+　python側で予め準備されているライブラリ
+外部ライブラリ
+　自分でインストールする必要がある
+
+インストールの方法
+!pip install wikipedia　#pythonのコードと区別するために！をはじめに付ける
+
+
+Collecting wikipedia
+  Downloading wikipedia-1.4.0.tar.gz (27 kB)
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from wikipedia) (4.12.3)
+Requirement already satisfied: requests<3.0.0,>=2.0.0 in /usr/local/lib/python3.10/dist-packages (from wikipedia) (2.32.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests<3.0.0,>=2.0.0->wikipedia) (3.4.0)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.10/dist-packages (from requests<3.0.0,>=2.0.0->wikipedia) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests<3.0.0,>=2.0.0->wikipedia) (2.2.3)
+Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests<3.0.0,>=2.0.0->wikipedia) (2024.8.30)
+Requirement already satisfied: soupsieve>1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4->wikipedia) (2.6)
+Building wheels for collected packages: wikipedia
+  Building wheel for wikipedia (setup.py) ... done
+  Created wheel for wikipedia: filename=wikipedia-1.4.0-py3-none-any.whl size=11679 sha256=c921216fb43ceee881f7582e55688c0c761fb63a7f85fbb4a6d75a1457ba6252
+  Stored in directory: /root/.cache/pip/wheels/5e/b6/c5/93f3dec388ae76edc830cb42901bb0232504dfc0df02fc50de
+Successfully built wikipedia
+Installing collected packages: wikipedia
+Successfully installed wikipedia-1.4.0　　　#Successfullyになっていればインストールできた
+
+使ってみる
+import wikipedia　　　　
+
+wikipedia.set_lang("ja")　　　#日本語を有効
+wikipedia.search("python")　　#pythonを調べる
+
+
+['Python',
+ 'IronPython',
+ 'モンティ・パイソン',
+ 'WxPython',
+ 'IDLE (Python)',
+ 'KML',
+ 'Stackless Python',
+ 'Eric Python IDE',
+ 'MicroPython',
+ 'Anaconda (Pythonディストリビューション)']
+
+URLの表示
+ウィキペディアのURLを表示
+
+url = wikipedia.page("python").url
+print(url)
+
+
+https://ja.wikipedia.org/wiki/Python
+
+
+
