@@ -1,0 +1,50 @@
+googlecolabとDriveをマウント（連携）する
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+
+Mounted at /content/drive
+
+4つのインポート
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+%matplotlib inline
+
+データの可視化のために下記を入力
+””の中は読み込みたいデータのファイルのパスをコピペして貼り付ける
+#dir_path = "パスをペースト/"  最後に/も入れる
+  
+dir_path = "/content/drive/MyDrive/データサイエンス/タイタニック/"
+
+#pandasで読み込んでtrain_dfとtest_dfに入れておく
+train_df = pd.read_csv(dir_path + "train.csv")
+test_df = pd.read_csv(dir_path + "test.csv") #実行
+
+#dfとはデータフレームの略でpandasを使って表形式のデータを読み込むと
+  #データフレームというpythonで操作しやすい形に変換してくれる
+
+#データの確認
+#head()を使うとデフォルトで先頭５行を表示するように設定されている()内に数値を入れるとその分表示される
+train_df.head()　#実行
+
+
+#データ内の先頭5項目が表形式で表示される。
+
+  
+データの縦列の項目を
+カラムと呼び
+現場だと大体カラムについての説明が書かれたドキュメント（項目定義書）が準備されていることが多い
+
+#テストデータも呼び出す
+  test_df.head()
+
+
+##データ内の先頭5項目が表形式で表示される。
+
+  
+
+  
