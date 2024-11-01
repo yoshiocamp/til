@@ -46,5 +46,212 @@ train_df.head()　#実行
 ##データ内の先頭5項目が表形式で表示される。
 
   
+データの大きさを調べる
+print("学習データの大きさ:", train_df.shape)
+print("テストデータの大きさ:",test_df.shape)　　#実行
+
+
+学習データの大きさ: (891, 12)
+テストデータの大きさ: (418, 11)
+データフレームの（行数,列数）を表している
+行は横
+列は縦
+
+テストデータでは生存したかどうかのカラムが抜けているが
+それを検証するため問題ない
+
+Survived（生存フラグ）０＝死亡　１＝生存
+
+カラムの方を調べる
+train_df.dtypes　　#実行
+
+PassengerId	int64
+Survived	int64
+Pclass	int64
+Name	object
+Sex	object
+Age	float64
+SibSp	int64
+Parch	int64
+Ticket	object
+Fare	float64
+Cabin	object
+Embarked	object
+
+dtype: object
+
+データ型は目視ではなくdtypesでしっかり確認する
+
+欠損値（データ内で欠けてしまっている値）の確認
+一般的には削除や補完を行う
+エラーの原因になるため
+
+欠損値を確認する方法は
+.isnull().sum()を使う
+
+train_df.isnull().sum() #実行
+
+	0
+PassengerId	0
+Survived	0
+Pclass	0
+Name	0
+Sex	0
+Age	177
+SibSp	0
+Parch	0
+Ticket	0
+Fare	0
+Cabin	687
+Embarked	2
+
+dtype: int64　　#かけているデータ数が表示される
+
+test_df.isnull().sum()　#実行
+
+	0
+PassengerId	0
+Pclass	0
+Name	0
+Sex	0
+Age	86
+SibSp	0
+Parch	0
+Ticket	0
+Fare	1
+Cabin	327
+Embarked	0
+
+dtype: int64
+
+比べてみると
+test_dfでは新たにFareが欠けていることがわかる
+一方でEnbarkedは欠損がない
+
+欠損値の確認は必ず学習データとテストデータの両方で行う
+
+info()メソッド
+これでも確認できる。データ使用料なども見れる
+
+train_df.info()   #実行
+
+
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  891 non-null    int64  
+ 1   Survived     891 non-null    int64  
+ 2   Pclass       891 non-null    int64  
+ 3   Name         891 non-null    object 
+ 4   Sex          891 non-null    object 
+ 5   Age          714 non-null    float64
+ 6   SibSp        891 non-null    int64  
+ 7   Parch        891 non-null    int64  
+ 8   Ticket       891 non-null    object 
+ 9   Fare         891 non-null    float64
+ 10  Cabin        204 non-null    object 
+ 11  Embarked     889 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.7+ KB
+
+データの特徴の確認
+
+データの連携を行う（実際の現場ではひとまとまりになっていることが多い）
+pd.concat()を使う
+()内に[]を入れてその中に連結したいデータを入れてignore_index=Trueでインデックスを振りなおす
+
+df = pd.concat([train_df, test_df], ignore_index=True)  #実行
+
+df.shape　#実行　　データの大きさを確認
+
+
+(1309, 12)　　　#テストデータと学習データがしっかり連結された数値になっている
+データの連結ではデータの下にそのままくっつけた形になっている
+
+欠けているデータもそのままなので確認していく
+データは後ろにくっつくので後ろ5行を確認する
+tail()メソッド
+
+df.tail()　　#実行
+
+##データ内の後ろ5項目が表形式で表示される。
+
+テストデータと学習データがしっかり連結できていることがわかる
+
+グラフにしてデータを可視化する
+今回は
+性別
+チケットのクラス
+生存したか否か
+の3つのカラムについてデータの可視化を行う
+
+1⃣Matplotlibを使ったデータの可視化
+まず先に各性別の人数を集計しておく必要がある
+性別ごとにグループ分け
+性別ごとにカウント
+の２ステップが必要
+
+.groupby()グループ化（）内にグループ化したいカラム
+[]に集計したいカラムを指定して.count()で集計
+df.groupby("Sex")["PassengerId"].count()  #実行
+
+PassengerId
+Sex	
+female	466
+male	843
+
+dtype: int64
+
+データから男性が2倍くらい多いことがわかる
+
+tmp = df.groupby("Sex")["PassengerId"].count()
+tmp                                              #このデータを変数に入れておくことでいつでも呼び出せるようにしておく
+
+
+Matplotlibを使って棒グラフを作成
+plt.bar()を使う
+plt.bar()で棒グラフ作成  （）内に性別を入れたいのでtmp.index 乗客の人数を入れたいのでtmp.values
+
+
+plt.figure(figsize=(6, 4))　　　#グラスの大きさ
+plt.bar(tmp.index, tmp.values)  
+plt.show()　　#なくても問題ない　描画するためのメソッド
+
+#グラフが描画される
+
+2⃣pandasでの可視化
+tmp.plot()を使う（）内でグラフの種類をkind="bar"にする
+
+tmp.plot(kind="bar", figsize=(6, 4))　　#実行
+
+#グラフが描画される
+tmp.plot(kind="bar", figsize=(6, 4))　　の下に
+pass
+を入れると<Axes: xlabel='Sex'>の表示も消せる
+
+
+3⃣seabornを使うと見やすいグラフになる
+sns.countplot()を使う（）内でdataをわたし、x="Sex"でカラムを指定
+
+
+plt.figure(figsize=(6, 4))
+
+sns.countplot(data=df, x="Sex")
+plt.show()　　　　　　　　　　　　　　　#実行
+
+
+
+#グラフが描画される
+
+集計用のコードも不要
+
+
+
+
+
+
 
   
