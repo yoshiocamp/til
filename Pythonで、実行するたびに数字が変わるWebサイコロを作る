@@ -1,0 +1,9 @@
+import random  #ランダム関数をインポートする
+
+number = random.randint(1,100) #randint()を使うことで、この場合1から100までの数字からランダムで数字が選出される
+
+実行するたびに数字が変わるWebサイコロを作る
+import random
+number = random.randint(1,6)
+print("サイコロの目は" + str(number) + "です。")     #numberは数値であるためstrで文字列にしないとエラーになる
+
