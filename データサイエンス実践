@@ -4,7 +4,7 @@ from google.colab import drive
 drive.mount('/content/drive')
 
 
-Mounted at /content/drive
+Mounted at /content/drive   #表示されれば成功
 
 4つのインポート
 import numpy as np
