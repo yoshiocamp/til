@@ -248,10 +248,40 @@ plt.show()　　　　　　　　　　　　　　　#実行
 
 集計用のコードも不要
 
+データを変えて実行してみる
+
+plt.figure(figsize=(6, 4))
+sns.countplot(data=df, x="Pclass")
+plt.show()
 
 
 
+  #グラフが描画される
+　#3つのデータでも問題なく描画される
 
 
+今回の本来の目的であるsurvivedを調べる
 
-  
+plt.figure(figsize=(6, 4))
+sns.countplot(data=df, x="Survived")
+plt.show()
+
+#グラフが描画される
+
+より正確に描画するならdfではなくtrain_dfの方が良い
+なぜならdfにはtest_dfのデータも含まれており、test_dfにはSurvivedのデータがないため
+
+
+plt.figure(figsize=(6, 4))
+sns.countplot(data=train_df, x="Survived")
+plt.show()
+
+
+#グラフが描画される
+
+生存した乗客の方が200件ほど少ないことが分かる
+
+
+グラフ作成のメリット
+データの特徴を理解しやすい
+特徴的エンジニアリングで役に立つ
