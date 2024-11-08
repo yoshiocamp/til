@@ -142,7 +142,7 @@ print(age_median)　　　　　　　　　　#念のため出力して確認
 df4["Age"] = df4["Age"].fillna(age_median) #欠損値を補完して代入しておく
 
 補完できた確認
-print("欠損値の数", df4["Age"].isnull().sum())  #復習
+print("欠損値の数:", df4["Age"].isnull().sum())  #復習
 
 欠損値の数 0　　　　#しっかりと補完できている
 
@@ -165,6 +165,26 @@ C　　　　　　 0　1　0
 
 
 このようにカラムを増やして数値変換する
+Pandasのget_dummies()を使う
+
+pd.get_dummies(df4["Embarked"])#()内に対象にしたいデータ
+pd.get_dummies(df4['Embarked'], dtype='uint8')# dtype='uint8'を入れないと現バージョンでは数値にならない
+
+数値化できたので元のデータに連結しprefixを追加 #prefixは変換後の数値のカラムを分かりやすくするため
+concat()で連結するがそのままでは縦に連結されてしまうため引数にaxis=1を入れて横に連結するようにする
+
+df5 = pd.concat([df4, ohe_embarked], axis=1)
+df5.head() #実行　確認
+
+無事に連結されていることが分かる
+もとのEmbarkedのカラムはいらないため削除する
+drop()を使用する　　#復習
+
+df6 = df5.drop(columns=["Embarked"])
+df6.head()
+
+ここまでで乗船した港を数値変換することができた。
+
 
 
 
