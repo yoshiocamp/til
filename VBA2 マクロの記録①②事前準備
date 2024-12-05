@@ -14,3 +14,41 @@
 ①開発タブ→VisualBasic
 ②Alt　＋　F11
 のどちらかで開く
+
+
+マクロの記録
+開発タブ→マクロの記録→OK
+この後行う操作がすべて記録される
+開発タブ→記録終了
+
+例
+①「１００」を入力する
+②「３００」に値を更新する
+③「DERETE」キーを押して値をクリアする
+
+
+これをマクロの記録で行うとどのように記録されるのか
+マクロ作成の画面を開いて（Alt　＋　F11）確認する
+
+標準モジュールのMojule1を開くと
+Sub Macro1()
+'
+' Macro1 Macro
+'
+
+'
+    Range("B50").Select
+    ActiveCell.FormulaR1C1 = "100"
+    Range("B50").Select
+    ActiveCell.FormulaR1C1 = "300"
+    Range("B50").Select
+    Selection.ClearContents
+End Sub
+
+と記録されている。
+
+マクロの実行（再生ボタン）で記録した操作が自動で行われる
+
+マクロの記録ではっ条件分岐などができない
+
+
