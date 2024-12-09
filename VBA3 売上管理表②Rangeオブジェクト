@@ -1,0 +1,34 @@
+セルの値の転機
+上から５行分を単純に転機
+
+Rangeオブジェクト
+１つ以上のセル範囲を扱うオブジェクト
+
+構文
+Range("セル範囲")
+
+単一セルRange("C8")など
+
+セル範囲Range("C8:H12")など
+
+行全体Range("8")など
+
+列全体Range("D")など
+
+A1セルに１を出力
+Sub test()
+
+  Range("A1").Value = 1
+
+end sub
+
+A1セルにB1セルの値を出力
+
+Sub test()
+
+  Range("A1").Value =  Range("B1").Value
+
+end sub
+
+
+
