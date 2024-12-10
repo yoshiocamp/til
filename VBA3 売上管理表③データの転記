@@ -1,0 +1,36 @@
+上から5行目までを単純に転記する
+
+一行目を転記する
+Sub practice()
+
+'転記パターン１：１セルずつ転記
+
+'L8セルの値をC8セルへ出力する
+　Range("L8").Value = Range("C8").Value
+
+'D8セルの値をM8セルへ出力する
+　Range("M8").Value = Range("D8").Value
+
+'E8セルの値をN8セルへ出力する
+　Range("N8").Value = Range("E8").Value
+
+'F8セルの値をO8セルへ出力する
+　Range("O8").Value = Range("F8").Value
+'G8セルの値をP8セルへ出力する
+　Range("P8").Value = Range("G8").Value
+'H8セルの値をQ8セルへ出力する
+　Range("Q8").Value = Range("H8").Value
+
+'転記パターン２：１行単位でまとめて転記
+ 'C9～H9セルの値をL9～Q9セルへ出力する
+ Range("L9:Q9").Value = Range("C9:H9").Value
+
+'転記パターン３：複数行まとめて転記
+ 'C10～H12セルの値をL10～Q12セルへ出力する
+ Range("L10:Q12").Value = Range("C10:H12").Value
+
+End Sub
+
+
+これで上から５行目まで自動転記できた
+もちろん転記パターン３で一気に転記ができる
