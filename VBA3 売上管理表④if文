@@ -1,0 +1,60 @@
+判定処理の実装
+もしAならX
+もしBならY
+
+該当データの日付が一致するなら転記する
+
+If分の記述方法
+
+If(条件①)Then
+条件①が成立した場合の処理
+ElseIF(条件②)Then
+条件②が成立した場合の処理
+Else
+どの条件も成立しなかったときの処理
+End If
+
+実行ボタンの作成
+開発タブ→挿入→フォームコントロール.ボタン
+
+実装
+If構文の中の”＝”は数学的な意味と同じ
+
+If (Range("D2").Value = Range("E8").Value) Then
+
+'同一であれば転記する
+    Range("L8").Value = Range("E8").Value
+    Range("M8").Value = Range("D8").Value
+    Range("N8").Value = Range("E8").Value
+    Range("O8").Value = Range("F8").Value
+    Range("P8").Value = Range("G8").Value
+    Range("Q8").Value = Range("H8").Value
+
+'判定処理の終了
+End If
+'同様に２行目の日付を判定する
+If (Range("D2").Value = Range("E9").Value) Then
+    Range("L9:Q9").Value = Range("C9:H9").Value
+End If
+
+'3行目の日付を判定する
+If (Range("D2").Value = Range("E10").Value) Then
+    Range("L10:Q10").Value = Range("C10:H10").Value
+End If
+    
+'4行目の日付を判定する
+If (Range("D2").Value = Range("E11").Value) Then
+    Range("L11:Q11").Value = Range("C11:H11").Value
+End If
+'5行目の日付を判定する
+If (Range("D2").Value = Range("E12").Value) Then
+    Range("L12:Q12").Value = Range("C12:H12").Value
+End If
+
+End Sub
+
+ボタンで実行できるようにする
+開発タブ→挿入→フォームコントロール.ボタン
+挿入したいマクロを選択してOK
+
+出来たボタンで右クリック→テキストの編集　で名前も変えることができる
