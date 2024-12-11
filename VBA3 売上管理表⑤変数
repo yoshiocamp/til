@@ -1,0 +1,152 @@
+変数の活用
+If (Range("D2").Value = Range("E9").Value) Then
+    Range("L9:Q9").Value = Range("C9:H9").Value
+End If
+このような書き方だと空白が出来てしまう。
+条件に合致した初めてのところは一番上の行に表示したい。
+
+転記した数によって転記する場所を変えたい
+
+変数とは数値を文字列などを入れたり出したりできる箱のようなもの
+
+変数の名前を定義する
+構文
+Dim [変数名]
+
+変数の使い方
+セルへの出力と同様に「＝」を使用する
+
+変数への保存
+[変数名] = [保存したい値]
+
+変数の取り出し
+[取り出し先] = [変数名]
+
+使用例
+'変数の宣言
+Dim hensu
+'変数に100を設定
+hensu = 100
+'変数の値をC5セルへ出力
+Range("C5").Value = hensu
+'変数を8に設定（変数の中身が８に更新される）
+hensu = 8
+'変数を使ってL8セルへC9の値を出力(変数は構文の一部としても使用可能)
+Range("L" & hensu).Value = Range("C8").Value
+'変数を用いるとRange("L8:Q8")のような指定はできない。
+'別の書き方ならできる
+ ctrRow = ctrRow + 1　という書き方で変数の中身をカウントアップできる
+
+例　行を詰めて指定日の詳細を転記する
+Sub createReport_step3()
+
+'-------------------------------------------
+'変数を使って基準年月日と同日の明細を転記する（上から５行目まで）
+'-------------------------------------------
+
+'出力行を指定する変数を定義
+ Dim ctrRow
+'出力行の開始位置を設定
+'8行目から出力する
+ ctrRow = 8
+
+'基準年月日(D2)と１行目の日付が同一かを判定する
+ If (Range("D2").Value = Range("E8").Value) Then
+
+ '同一であった場合、セルの値を転記する
+  Range("L" & ctrRow).Value = Range("C8").Value
+  Range("M" & ctrRow).Value = Range("D8").Value
+  Range("N" & ctrRow).Value = Range("E8").Value
+  Range("O" & ctrRow).Value = Range("F8").Value
+  Range("P" & ctrRow).Value = Range("G8").Value
+  Range("Q" & ctrRow).Value = Range("H8").Value
+ 
+ '１行出力したため、出力行の位置を＋１する
+  ctrRow = ctrRow + 1
+ 
+'判定処理の終了
+ End If
+
+'同様に２行目も日付を判定する
+
+'基準年月日(D2)と１行目の日付が同一かを判定する
+ If (Range("D2").Value = Range("E9").Value) Then
+
+ '同一であった場合、セルの値を転記する
+  Range("L" & ctrRow).Value = Range("C9").Value
+  Range("M" & ctrRow).Value = Range("D9").Value
+  Range("N" & ctrRow).Value = Range("E9").Value
+  Range("O" & ctrRow).Value = Range("F9").Value
+  Range("P" & ctrRow).Value = Range("G9").Value
+  Range("Q" & ctrRow).Value = Range("H9").Value
+ 
+ '１行出力したため、出力行の位置を＋１する
+  ctrRow = ctrRow + 1
+ 
+'判定処理の終了
+
+ End If
+
+'3行目の日付を判定する
+'基準年月日(D2)と１行目の日付が同一かを判定する
+ If (Range("D2").Value = Range("E10").Value) Then
+
+ '同一であった場合、セルの値を転記する
+  Range("L" & ctrRow).Value = Range("C10").Value
+  Range("M" & ctrRow).Value = Range("D10").Value
+  Range("N" & ctrRow).Value = Range("E10").Value
+  Range("O" & ctrRow).Value = Range("F10").Value
+  Range("P" & ctrRow).Value = Range("G10").Value
+  Range("Q" & ctrRow).Value = Range("H10").Value
+ 
+ '１行出力したため、出力行の位置を＋１する
+  ctrRow = ctrRow + 1
+ 
+'判定処理の終了
+ End If
+
+'4行目の日付を判定する
+'基準年月日(D2)と１行目の日付が同一かを判定する
+ If (Range("D2").Value = Range("E11").Value) Then
+
+ '同一であった場合、セルの値を転記する
+  Range("L" & ctrRow).Value = Range("C11").Value
+  Range("M" & ctrRow).Value = Range("D11").Value
+  Range("N" & ctrRow).Value = Range("E11").Value
+  Range("O" & ctrRow).Value = Range("F11").Value
+  Range("P" & ctrRow).Value = Range("G11").Value
+  Range("Q" & ctrRow).Value = Range("H11").Value
+ 
+ '１行出力したため、出力行の位置を＋１する
+  ctrRow = ctrRow + 1
+ 
+'判定処理の終了
+ End If
+
+'5行目の日付を判定する
+'基準年月日(D2)と１行目の日付が同一かを判定する
+ If (Range("D2").Value = Range("E12").Value) Then
+
+ '同一であった場合、セルの値を転記する
+ Range("L" & ctrRow).Value = Range("C12").Value
+ Range("M" & ctrRow).Value = Range("D12").Value
+ Range("N" & ctrRow).Value = Range("E12").Value
+ Range("O" & ctrRow).Value = Range("F12").Value
+ Range("P" & ctrRow).Value = Range("G12").Value
+ Range("Q" & ctrRow).Value = Range("H12").Value
+ 
+ '１行出力したため、出力行の位置を＋１する
+ ctrRow = ctrRow + 1
+ 
+'判定処理の終了
+ End If
+ 
+End Sub
+
+
+（なぜかできない）
+VBEの左側のグレーのところを押すと表示が赤くなりそこでいったん処理を止めて確認することが出来る
+F8を押すと順番に一個ずつ実行することが出来、コードがおかしい所を探るときに使う
+
+
+
