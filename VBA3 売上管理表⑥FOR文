@@ -1,0 +1,49 @@
+繰り返し処理とは同じ処理を一定回数実行するための処理
+例
+１～５行目まで（一定回数）、日付判定の上転記する。
+
+構文
+For[変数] = [初期値] To [最終値]
+ '繰り返したい処理
+
+...........
+
+Next[変数]
+
+例えば1 To 5なら1～5回
+
+例
+
+Sub createReport_step4()
+
+'----------------------------------------------------------
+'基準年月日と同日の明細を繰り返し転記する。(上から5行目まで)
+'----------------------------------------------------------
+
+'出力行を指定する変数の定義
+Dim ctrRow
+'繰り返し処理用の変数定義
+Dim i
+'出力行の開始位置を設定
+ctrRow = 8
+'8行目から12行目まで(上から5行目まで)を繰り返す
+For i = 8 To 12
+ '日付が基準年月日と一致しているかを判定する
+ If (Range("E" & i).Value = Range("D2").Value) Then
+    
+  Range("L" & ctrRow).Value = Range("C" & i).Value
+  Range("M" & ctrRow).Value = Range("D" & i).Value
+  Range("N" & ctrRow).Value = Range("E" & i).Value
+  Range("O" & ctrRow).Value = Range("F" & i).Value
+  Range("P" & ctrRow).Value = Range("G" & i).Value
+  Range("Q" & ctrRow).Value = Range("H" & i).Value
+ 
+'1行出力したため、出力行の位置を＋1する
+    ctrRow = ctrRow + 1
+'判定処理の終了
+ End If
+'繰り返し処理の終了
+Next i
+ 
+
+End Sub
