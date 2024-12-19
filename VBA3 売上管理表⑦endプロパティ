@@ -1,0 +1,55 @@
+最終行の取得
+構文
+Range("セルの指定").End(xlDown),Row
+Ctrl+↓ みたいなもの
+
+例
+Range("C3").End(xlDown).Row
+C3の列の一番下のRow（行）を取得する。
+
+Endプロパティとは指定したセルをとして終端セルを示すプロパティ
+
+Sub createReport_step6()
+
+
+'---------------------------------------------------------------
+'変数を使って基準年月日と同日の明細を転記する（上から最終行まで）
+'---------------------------------------------------------------
+
+'出力を指定する変数を定義
+ Dim ctrRow
+'繰り返し処理用の変数定義
+ Dim i
+'最終行格納用の変数定義
+ Dim endRow
+'出力行の開始位置を設定
+ ctrRow = 8
+'入力データの最終行を取得
+ endRow = Range("C8").End(xlDown).Row
+'８行目から最終行までを繰り返す
+ For i = 8 To endRow
+
+'日付が基準年月日と一致しているかを判定する
+    If (Range("E" & i).Value = Range("D2").Value) Then
+
+        Range("L" & ctrRow).Value = Range("C" & i).Value
+        Range("M" & ctrRow).Value = Range("D" & i).Value
+        Range("N" & ctrRow).Value = Range("E" & i).Value
+        Range("O" & ctrRow).Value = Range("F" & i).Value
+        Range("P" & ctrRow).Value = Range("G" & i).Value
+        Range("Q" & ctrRow).Value = Range("H" & i).Value
+    
+    '１行出力した為、出力行の位置を＋１する
+        ctrRow = ctrRow + 1
+    End If
+
+ Next i
+
+
+End Sub
+
+For構文と最終行の取得を組み合わせることで抽出したデータを並べるなどの作業は大抵できる。
+
+ただし表の中で空白の行があるとそこで処理が止まってしまうので注意。
+
+
