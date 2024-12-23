@@ -1,0 +1,58 @@
+ワークシーツオブジェクト
+シートを指定しないでコードを書いているときは暗黙の了解で現在アクティブなセルを指定する。
+
+構文
+Worksheets("シート名").Range ("A1").Value
+
+
+Sub createReport_step10()
+
+
+'---------------------------------------------------------------
+'変数を使って基準年月日と同日の明細を転記する（上から最終行まで）
+'---------------------------------------------------------------
+
+'出力を指定する変数を定義
+ Dim ctrRow
+
+'繰り返し処理用の変数定義
+
+ Dim i
+'最終行格納用の変数定義
+
+ Dim endRow
+'出力行の開始位置を設定
+ ctrRow = 8
+
+'入力データの最終行を取得
+ endRow = Range("C8").End(xlDown).Row
+ 
+
+'８行目から最終行までを繰り返す
+ For i = 8 To endRow
+
+'日付が基準年月日と一致しているかを判定する
+  If (Range("E" & i).Value = Range("D2").Value) Then
+    Worksheets("Sheet2").Range("C" & ctrRow).Value = Range("C" & i).Value
+    Worksheets("Sheet2").Range("D" & ctrRow).Value = Range("D" & i).Value
+    Worksheets("Sheet2").Range("E" & ctrRow).Value = Range("E" & i).Value
+    Worksheets("Sheet2").Range("F" & ctrRow).Value = Range("F" & i).Value
+    Worksheets("Sheet2").Range("G" & ctrRow).Value = Range("G" & i).Value
+    Worksheets("Sheet2").Range("H" & ctrRow).Value = Range("H" & i).Value
+
+  '１行出力した為、出力行の位置を＋１する
+    ctrRow = ctrRow + 1
+    
+ End If
+ 
+Next i
+
+
+
+End Sub
+
+
+これで別のシートに分けて転記することができる
+
+
+
