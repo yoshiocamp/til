@@ -1,0 +1,80 @@
+ツールの参照設定から
+Microsoft Outlook 16.0 Object Libraryにチェックしておく。
+
+
+Sub sendEmail()
+
+ Dim olApp As New Outlook.Application
+ Dim olMail As Outlook.MailItem
+ Dim ws As Worksheet
+ 
+ Set olMail = olApp.CreateItem(olMailItem)
+ Set ws = Worksheets("メイン")
+ 
+ 'olMail.SendUsingAccount = Session.Accounts("nishinomiya@hands.hyogo.jp")　設定したいアドレスがあるとき
+ 
+ olMail.To = ws.Range("B1").Value
+ 'olMail.CC = "test@test.com"　　CC設定するとき
+ 'olMail.BCC = "test@test.com"　　BCC設定するとき
+ olMail.Subject = ws.Range("B2").Value
+ olMail.Body = Replace(ws.Range("B3").Value, vbLf, vbCrLf)
+ 'olMail.HTMLBODY = Replace(ws.Range("B3").Value, vbLf,"<br>"　HTML形式にする時
+ 
+ 'olMail.Display
+ olMail.Send
+ MsgBox "送信完了"
+ 
+ olApp.Quit
+ 
+ Set olMail = Nothing
+ Set olApp = Nothing
+ 
+End Sub
+
+
+
+構文解説
+ Dim olApp As New Outlook.Application
+Outlookのアプリを立ち上げる
+
+ Dim olMail As Outlook.MailItem
+メール変数を生成するために変数宣言
+
+ Dim ws As Worksheet
+ワークシートの変数も定義
+
+Set olMail = olApp.CreateItem(olMailItem)
+宣言したolMailの変数の中にolMailItemを作る変数を入れる
+
+ Set ws = Worksheets("メイン")
+使用するワークシートを宣言
+
+ olMail.To = ws.Range("B1").Value
+宛先設定
+
+ olMail.Subject = ws.Range("B2").Value
+件名設定
+
+ olMail.Body = Replace(ws.Range("B3").Value, vbLf, vbCrLf)
+本文設定
+vbLfはセル内の改行設定
+vbCrLfは通常のテキストの改行せってい
+"<br>"はHTML形式の改行設定
+
+olMail.Display
+①メールの送信をOutlookで自分で送る場合（確認してから送りたい時など）
+ olApp.Quitも消しておく必要がある
+
+olMail.Send
+②エクセルだけで送信までする場合　①か②のどちらかを使用
+
+ MsgBox "送信完了"
+送信した後の確認ダイヤルボックスを表示する
+
+ olApp.Quit
+ アプリを自動で閉じる
+
+ Set olMail = Nothing
+ Set olApp = Nothing
+メモリの圧迫回避のため変数を開放する
+
