@@ -17,6 +17,47 @@ end = ""を最後に着けるのでも同じ
 end = "%"などにすると文字列が％で区切られる
 
 5 変数
+変数名　= 代入したい名前
+一文字目は_か小文字のアルファベット
 
+6 ランダムな数値を表示させる
+数値を文字列と一緒に表示するときは
+str(数値)として文字列として扱えるようにして表示させる
+またランダムな数値を表示させるには
+import randomをインポートした後に
+random.randint(引数１,引数２)とすることで
+引数１から引数２の間の整数の中からランダムで数値を表示させられるようになる
+例
+import random
+number = random.randint(1,20)
+print("スライムが" + str(number) + "匹あらわれた")
 
+7 計算する
+number = 100 +20
+print(number）
+なら出力は120
+
+number = 100
+print(number +20)
+print(number）
+　これなら出力は
+120
+100
+となり出力する際にも演算できるが
+変数の中身は変わっていないことがわかる
+
+8 値段の計算
+例
+import random
+apple_price = random.randint(1,3)*100	#リンゴの単価
+apple_num = random.randint(1,10)	#リンゴを買う数
+print("リンゴの単価:" + str(apple_price) + "円")
+print("リンゴを買う数:" + str(apple_num) + "個")
+total = apple_price * apple_num
+print("合計金額:" + str(total) + "円")
+
+randint関数を組み合わせることでこのようなランダムな値段とランダムな個数から値段を算出するコードも書ける
+random.randint(1,3)*100とすることで１００刻みのランダム数字にすることも可能
+
+9 データの型
 
