@@ -155,4 +155,51 @@ elif time:
 # a <= b  :aはb以下
 # a != b  :aはbと等しくない
 
-2－4
+2－4 おみくじを作る
+import random
+
+omikuji = random.randint(1,10) #1~10のランダムな値を出す。
+print(omikuji) #デバック用
+
+if omikuji == 1:
+    print("大吉")
+elif omikuji == 2:
+    print("中吉")
+elif omikuji <= 4: # 3,4
+    print("小吉")
+elif omikuji <= 7:　#5,6,7
+    print("凶")
+else:               #8,9,10
+    print("大凶")
+    
+print(omikuji)などの様にコードを挟んで動作確認することをデバックという。
+必要がなくなったらコメントアウトしておく
+
+2-5　RPGのクリティカルヒットを再現
+# スライムと戦っている。
+# 1から10のサイコロをふって、
+# 6未満の場合、サイコロの目だけダメージを与えたと表示。
+# 6以上の場合、クリティカルヒットとして、100のダメージを与えたと表示。
+import random
+hit = random.randint(1,10)
+print(hit)
+
+if hit < 6:
+    print("スライムに、" + str(hit) + "ダメージを与えた！")
+else:
+    print("クリティカルヒット！スライムに、100のダメージを与えた！")
+    ]
+2-6 西暦から令和を算出する
+
+# 西暦年から令和年を求める
+import datetime
+seireki = datetime.date.today().year #今日の西暦年をだす。
+print("西暦" + str(seireki) + "年は",end = "")　#,end = ""とすることで改行なしで次の出力を出力できる。
+
+#西暦年から令和年を計算する
+#令和1年とは西暦2019年。その差は、2018
+#西暦年　-　2018　= 令和*年
+
+
+reiwa = seireki - 2018
+print("令和" +str(reiwa) + "年です")
