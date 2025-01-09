@@ -1,0 +1,51 @@
+3-1　forループ
+for カウンタ変数 in 　繰り返す範囲
+    繰り返し処理　#必ずインデント
+
+例
+'''
+for i in range(6,11):               #繰り返す範囲は６～１０　11は終了値になっている為動かない
+    print("hello world:" + str(i))
+
+hello world:6
+hello world:7
+hello world:8
+hello world:9
+hello world:10
+'''
+つまりi変数にはじめは6を代入して実行
+二回目は７，三回目は８...最後に10を代入して実行し11が来たので処理を止めるといった動作になる。
+
+for i in range(5):            #繰り返す範囲は5回　
+    print("hello world:")
+
+hello world
+hello world
+hello world
+hello world
+hello world
+
+3-2 条件によって繰り返し
+# whileによるループ処理
+#カウンタ変数を初期化
+while 条件式:
+    #繰り返し処理
+    #カウンタ変数を更新
+
+例
+i = 1#カウンタ変数を初期化
+while i <= 10:
+    print(i)#繰り返し処理
+    i = i + 1#カウンタ変数を更新
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
