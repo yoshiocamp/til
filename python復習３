@@ -66,7 +66,7 @@ print(len(enemies))
 {'中ボス': 'レッドドラゴン', 'ラスボス': '魔王', 'ザコ２': 'メタルモンスター'}　　　　　　　　　　　　#["ザコ":"スライム"]が削除されて消えている
 3
 
-5-3　辞書をループで処理する
+5-4　辞書をループで処理する
 キーと要素をそれぞれ取り出すにはitems()メソッドを使う
 for (カウント変数,カウント関数２) in 辞書名.items():
 カウント変数にキー名、カウント変数２に要素名が格納される
@@ -93,4 +93,77 @@ for (rank, enemy) in enemies.items():　　　　#キーと要素を取り出す
 ラスボスの魔王が、あらわれた！
 
 
-5-4 リストの整列
+5-5 リストの整列
+sorted()関数を使うことで並び順を整列することが出来る。
+sorted(リスト名)
+並び順を逆にするときはreverse=Trueを入れる
+sorted(リスト名,reverse=True)
+漢字の場合はpythonの中の基準で並びが決まっているため注意する。
+'''
+weapons = ["イージスソード","ウィンドスピア","アースブレイカー","イナズマハンマー"]
+print(weapons)
+
+print(sorted(weapons))
+print(sorted(weapons, reverse = True))
+
+weapons2 = ["4.イージスソード","1.ウィンドスピア","3.アースブレイカー","2.イナズマハンマー"]
+print(sorted(weapons2))
+
+weapons3 = ["バーニングソード","風神スピア","大地ブレイカー","稲妻ハンマー"]
+print(sorted(weapons3))
+'''
+
+['イージスソード', 'ウィンドスピア', 'アースブレイカー', 'イナズマハンマー']
+['アースブレイカー', 'イナズマハンマー', 'イージスソード', 'ウィンドスピア']　#あいうえお順になっている
+['ウィンドスピア', 'イージスソード', 'イナズマハンマー', 'アースブレイカー']　#逆の順番
+['1.ウィンドスピア', '2.イナズマハンマー', '3.アースブレイカー', '4.イージスソード']　#数字でもできる
+['バーニングソード', '大地ブレイカー', '稲妻ハンマー', '風神スピア']　　　　　#漢字の場合は注意
+
+5-6 辞書の整列
+辞書はsortするとリストに変換されてキーのあいうえお順で表示される。
+辞書は辞書で残っている
+キーと要素を表示したいときは.items()を使う
+タプルとはデータ小僧の一種で内容の変更は不可
+
+'''
+weapons = {"イージスシード":40,"ウィンドスピア":12,"アースブレイカー":99}
+print(sorted(weapons))
+print(weapons)
+print(sorted(weapons.items()))
+'''
+
+['アースブレイカー', 'イージスシード', 'ウィンドスピア']
+{'イージスシード': 40, 'ウィンドスピア': 12, 'アースブレイカー': 99}
+[('アースブレイカー', 99), ('イージスシード', 40), ('ウィンドスピア', 12)] #items()メソッドを使うとキーと要素がペア（タプル）にされる
+
+
+5-7,5-8 RPGのアイテム一覧の再現
+
+'''
+item_images = {
+    "剣":"http://paiza.jp/learning/images/sword.png",
+    "盾":"http://paiza.jp/learning/images/shield.png",
+    "回復薬":"http://paiza.jp/learning/images/potion.png",
+    "クリスタル":"http://paiza.jp/learning/images/crystal.png"
+}
+
+# アイテムの並び順配列
+item_orders = ["クリスタル", "盾", "剣", "回復薬", "回復薬", "回復薬"]
+print(item_images)
+print(item_orders)
+
+#アイテム名を取り出す
+for item_name in item_orders:
+   
+#画像ファイル名を取り出す
+    print("<img src='" + item_images[item_name] + "'>")
+    print(item_name + "<br>")
+'''
+
+
+{'剣': 'http://paiza.jp/learning/images/sword.png', '盾': 'http://paiza.jp/learning/images/shield.png', '回復薬': 'http://paiza.jp/learning/images/potion.png', 'クリスタル': 'http://paiza.jp/learning/images/crystal.png'} ['クリスタル', '盾', '剣', '回復薬', '回復薬', '回復薬']  クリスタル
+ 盾
+ 剣
+ 回復薬
+ 回復薬
+ 回復薬
